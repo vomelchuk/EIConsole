@@ -1,6 +1,6 @@
 .git
 .classpath
 .settings
-allure-results
-.class
-test-output
+**/allure-results
+**/.class
+**/test-output
