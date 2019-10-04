@@ -1,28 +1,27 @@
 package com.ei.pageObjects.common.pages;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import com.ei.pageObjects.BasePage;
+import com.ei.pageObjects.common.component.AddFilterOrColumnComponent;
+import com.ei.pageObjects.common.enumeration.implementation.AbstractEnum;
 
-public class AddFilterOrColumnPage extends BasePage {
-	// locators
-	@FindBy(xpath = "//label[text()='Enter quick search pattern.']/../..//input")
-	WebElement txtQuickSearch;
-	@FindBy(id = "eid-selector-button-select")
-	WebElement btnSelect;
-	@FindBy(id = "eid-selector-button-cancel")
-	WebElement btnCancel;
+import io.qameta.allure.Step;
+
+public class AddFilterOrColumnPage extends AddFilterOrColumnComponent {
 
 	// methods
-	protected void clickSelectButton() {
+	@Step
+	public void clickSelectButton() {
+		// waitForWebElementDisplayed(btnSelect);
 		clickElement(btnSelect);
+
 	}
 
-	protected void clickCancelButton() {
+	@Step
+	public void clickCancelButton() {
 		clickElement(btnCancel);
 	}
 
-	protected void enterSearchFilter(String text) {
+	@Step
+	public void enterSearchFilter(String text) {
 		writeText(txtQuickSearch, text);
 	}
 

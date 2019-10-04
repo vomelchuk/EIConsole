@@ -1,10 +1,26 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-  
-<suite name="Suite_1" verbose="2"  >
-  <test name="Login tests">
-    <classes>
-        <!-- <class name="com.ei.testCases.LoginTests.LoginPageTest" />-->  
-         <class name="com.ei.testCases.DummyTest" /> 
-    </classes>
-  </test>
+
+<suite name="Regression" verbose="2" parallel="none">
+
+	<listeners>
+		<listener class-name="com.ei.test_cases.EIListener" />
+	</listeners>
+
+	<test name="Login">
+		<packages>
+			<package name="com.ei.test_cases.login" />
+		</packages>
+	</test>
+
+	<test name="Sorting">
+		<packages>
+			<package name="com.ei.test_cases.sorting" />
+		</packages>
+	</test>
+	<test name="Filters">
+		<packages>
+			<package name="com.ei.test_cases.filter" />
+		</packages>
+	</test>
+
 </suite>

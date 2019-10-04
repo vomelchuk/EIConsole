@@ -1,18 +1,19 @@
 package com.ei.pageObjects.admin;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.ei.pageObjects.HeaderSidebarPage;
+import com.ei.pageObjects.MainPage;
+import com.ei.pageObjects.admin.hashes.AdminBlockedHashesPage;
+import com.ei.pageObjects.admin.rules.AdminAlarmRulesPage;
 import com.ei.pageObjects.admin.tabs.AdminAuditPage;
-import com.ei.pageObjects.admin.tabs.AdminBlockedHashesPage;
 import com.ei.pageObjects.admin.tabs.AdminExclusionsPage;
 import com.ei.pageObjects.admin.tabs.AdminServerSettingsPage;
 import com.ei.pageObjects.admin.tabs.AdminTasksPage;
-import com.ei.pageObjects.admin.tabs.alarmRules.AdminAlarmRulesPage;
 
-public class AdminPage extends HeaderSidebarPage {
+import io.qameta.allure.Step;
+
+public class AdminPage extends MainPage {
 
 	@FindBy(id = "eid-tab-console.admin.rules")
 	WebElement lnkRules;
@@ -27,32 +28,32 @@ public class AdminPage extends HeaderSidebarPage {
 	@FindBy(id = "eid-tab-console.admin.audit")
 	WebElement lnkAudit;
 
-
+	@Step
 	public AdminAlarmRulesPage chooseAlarmsRulesTab() {
 		clickNotClickableElement(lnkRules);
 		return new AdminAlarmRulesPage();
 	}
-
+	@Step
 	public AdminExclusionsPage chooseExclusionsTab() {
 		clickNotClickableElement(lnkExclusions);
 		return new AdminExclusionsPage();
 	}
-
+	@Step
 	public AdminTasksPage chooseTasksTab() {
 		clickNotClickableElement(lnkTasks);
 		return new AdminTasksPage();
 	}
-
+	@Step
 	public AdminBlockedHashesPage chooseBlockedHashesTab() {
 		clickNotClickableElement(lnkHashes);
 		return new AdminBlockedHashesPage();
 	}
-
+	@Step
 	public AdminServerSettingsPage chooseServerSettingsTab() {
 		clickNotClickableElement(lnkServerSettings);
 		return new AdminServerSettingsPage();
 	}
-
+	@Step
 	public AdminAuditPage chooseAuditTab() {
 		clickNotClickableElement(lnkAudit);
 		return new AdminAuditPage();

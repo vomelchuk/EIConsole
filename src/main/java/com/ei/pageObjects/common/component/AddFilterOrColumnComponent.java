@@ -1,46 +1,47 @@
 package com.ei.pageObjects.common.component;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-import com.ei.pageObjects.common.pages.AddFilterOrColumnPage;
+import com.ei.pageObjects.BasePage;
+import com.ei.pageObjects.common.enumeration.ElementFindBy;
+import com.ei.pageObjects.common.enumeration.MyEnumType;
+import com.ei.pageObjects.common.enumeration.implementation.AbstractEnum;
 
-public class AddFilterOrColumnComponent extends AddFilterOrColumnPage {
+public class AddFilterOrColumnComponent extends BasePage {
 
-	// private List<? extends Enum<?>> filters;
-	// private String[] filterLabels;
-	// Map<>
-	/*
-	 * public AddFilterOrColumnComponent(WebDriver driver, List<? extends Enum<?>>
-	 * filters) { super(driver); //this.filters = filters; }
-	 */
-	// methods
+	// locators
+	@FindBy(xpath = "//label[text()='Enter quick search pattern.']/../..//input")
+	protected WebElement txtQuickSearch;
+	@FindBy(id = "eid-selector-button-select")
+	protected WebElement btnSelect;
+	@FindBy(id = "eid-selector-button-cancel")
+	protected WebElement btnCancel;
 
-	public String getItemName(String filterName) {
-		String xpathValue = "//label[@for='eid-selector-checkbox-" + filterName
+	public String getItemName(AbstractEnum myEnum, MyEnumType enumType) {
+		waitForWebElementDisplayed(btnSelect);
+
+		String suffixName = enumType == MyEnumType.COLUMN ? myEnum.getColumnName() : myEnum.getFilterName();
+		String xpathValue = "//label[@for='eid-selector-checkbox-" + suffixName
 				+ "']/../../div[last()]/descendant::span[last()]";
 		return getElementText(driver.findElement(By.xpath(xpathValue)));
 	}
 
-	public WebElement getItemCheckBox(String filterName) {
-		String xpathValue = "//label[@for='eid-selector-checkbox-" + filterName + "']/../../div[last()]//label/span";
+	public WebElement getItemCheckBox(AbstractEnum myEnum, MyEnumType enumType) {
+		waitForWebElementDisplayed(btnSelect);
+		String suffixName = enumType == MyEnumType.COLUMN ? myEnum.getColumnName() : myEnum.getFilterName();
+		String xpathValue = "//label[@for='eid-selector-checkbox-" + suffixName + "']/../../div[last()]//label/span";
+
 		return driver.findElement(By.xpath(xpathValue));
 	}
 
-	public boolean isItemChosen(String filterName) {
-
-		String xpathValue = "//label[@for='eid-selector-checkbox-" + filterName
+	public boolean isItemChecked(AbstractEnum myEnum, MyEnumType enumType) {
+		waitForWebElementDisplayed(btnSelect);
+		String suffixName = enumType == MyEnumType.COLUMN ? myEnum.getColumnName() : myEnum.getFilterName();
+		String xpathValue = "//label[@for='eid-selector-checkbox-" + suffixName
 				+ "']/../../div[last()]/div[contains(@class,'checked')]";
-
-		try {
-			driver.findElement(By.xpath(xpathValue));
-			return true;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
-
+		return isWebElementPresent(xpathValue, ElementFindBy.XPATH);
 	}
 
 }

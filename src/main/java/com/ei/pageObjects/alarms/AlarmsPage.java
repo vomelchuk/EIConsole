@@ -1,18 +1,13 @@
 package com.ei.pageObjects.alarms;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.ei.pageObjects.HeaderSidebarPage;
-import com.ei.pageObjects.common.component.TableComponent;
-import com.ei.pageObjects.common.enumeration.CustomItems;
-import com.ei.pageObjects.common.enumeration.column.AlarmsColumns;
-import com.ei.pageObjects.common.localFilter.LocalFiltersPanelWithSeveritiesPriorities;
+import com.ei.pageObjects.MainPage;
 
-public class AlarmsPage extends HeaderSidebarPage {
+import io.qameta.allure.Step;
+
+public class AlarmsPage extends MainPage {
 	// fields
 	@FindBy(id = "commanding-toolbar-left-button-0")
 	WebElement btnMarkAsResolved;
@@ -25,45 +20,23 @@ public class AlarmsPage extends HeaderSidebarPage {
 	@FindBy(id = "commanding-toolbar-right-button-1")
 	WebElement btnEditRule;
 	
-	CustomItems columns;
-	LocalFiltersPanelWithSeveritiesPriorities localFilters;
-	TableComponent tableView;
-
-	// constructors
-	public AlarmsPage() {
-		localFilters = new LocalFiltersPanelWithSeveritiesPriorities();
-		tableView = new TableComponent(Arrays.asList(AlarmsColumns.values()));
-	}
-
-	// methods returning other object
-	public AlarmsAddFiltersPage getAddFilterPage() {
-		localFilters.clickAddFilterButton();
-		return new AlarmsAddFiltersPage(driver);
-	}
-
-	public AlarmsPage refreshView() {
-		localFilters.clickRefreshButton();
+	@Step
+	public AlarmsPage clickMarkAsResolvedButton() {
+		clickElement(btnMarkAsResolved);
 		return this;
 	}
-
-	public AlarmsSelectColumnsPage getSelectColumnsPage() {
-		tableView.selectColumns();
-		return new AlarmsSelectColumnsPage();
+	@Step
+	public AlarmsPage clickMarkAsUnesolvedButton() {
+		clickElement(btnMarkAsUnresolved);
+		return this;
 	}
-
-	// other methods
-	public List<WebElement> getAllColumnValuesByColumnName(String columnName) {
-		return tableView.getWebElementsByColumnName(columnName);
+	@Step
+	public MarkAsPriorityPage clickMarkAsPriorityButton() {
+		clickElement(btnMarkAsPriority);
+		return new MarkAsPriorityPage();
 	}
-
-	// invoke context menu of particular element in the table
-	public void clickTableElement(String columnName, int ind) {
-		clickNotClickableElement(tableView.getWebElementByColumnAndRow(columnName, ind));
+	
+	public boolean isMarkAsResolvedEnabled() {
+		return false;
 	}
-
-	// sorting view by particular column
-	public void clickColumnByColumnName(String columnName) {
-		clickNotClickableElement(tableView.getColumnHeader(columnName));
-	}
-
 }

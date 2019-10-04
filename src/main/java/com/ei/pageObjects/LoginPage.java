@@ -1,10 +1,9 @@
 package com.ei.pageObjects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.ei.pageObjects._later.DashboardPage;
+import io.qameta.allure.Step;
 
 public class LoginPage extends BasePage {
 
@@ -21,28 +20,35 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//span[text()='Log into Domain']/ancestor::label/span")
 	WebElement chkDomainUser;
 
-	@FindBy(xpath = "//span[contains(text(), 'Login failed:') and @xpath='1']")
+	@FindBy(xpath = "//span[contains(text(), 'Login failed:')]")
 	WebElement errNotification;
 
 	// methods
+	@Step
 	public LoginPage setUsername(String user) {
 		writeText(txtUsername, user);
 		return this;
 	}
 
-	public LoginPage setPassw0rd(String passw) {
+	@Step
+	public LoginPage setPassword(String passw) {
 		writeText(txtPassword, passw);
 		return this;
 	}
 
-	public LoginPage clickDomainUserCheckBox() {
+	@Step
+	public LoginPage checkDomainUserCheckbox() {
 		clickElement(chkDomainUser);
 		return this;
 	}
 
-	public DashboardPage clickLoginButton() {
+	@Step
+	public void clickLoginButton() {
 		clickElement(btnLogin);
-		return new DashboardPage();
+	}
+
+	public String getErrorMessage() {
+		return getElementText(errNotification);
 	}
 
 }

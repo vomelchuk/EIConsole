@@ -32,4 +32,12 @@ public class Configuration {
 	public static String get(String key) {
 		return props.getProperty(key);
 	}
+	
+	public static String getNativeUsername() {
+		return get("username");
+	}
+	
+	public static String getNativePassword() {
+		return get("password");
+	}
 }
