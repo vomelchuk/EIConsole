@@ -29,32 +29,32 @@ public class AdminPage extends MainPage {
 	WebElement lnkAudit;
 
 	@Step
-	public AdminAlarmRulesPage chooseAlarmsRulesTab() {
+	public AdminAlarmRulesPage getAlarmsRulesTab() {
 		clickNotClickableElement(lnkRules);
 		return new AdminAlarmRulesPage();
 	}
 	@Step
-	public AdminExclusionsPage chooseExclusionsTab() {
+	public AdminExclusionsPage getExclusionsTab() {
 		clickNotClickableElement(lnkExclusions);
 		return new AdminExclusionsPage();
 	}
 	@Step
-	public AdminTasksPage chooseTasksTab() {
+	public AdminTasksPage getTasksTab() {
 		clickNotClickableElement(lnkTasks);
 		return new AdminTasksPage();
 	}
 	@Step
-	public AdminBlockedHashesPage chooseBlockedHashesTab() {
+	public AdminBlockedHashesPage getBlockedHashesTab() {
 		clickNotClickableElement(lnkHashes);
 		return new AdminBlockedHashesPage();
 	}
 	@Step
-	public AdminServerSettingsPage chooseServerSettingsTab() {
+	public AdminServerSettingsPage getServerSettingsTab() {
 		clickNotClickableElement(lnkServerSettings);
 		return new AdminServerSettingsPage();
 	}
 	@Step
-	public AdminAuditPage chooseAuditTab() {
+	public AdminAuditPage getAuditTab() {
 		clickNotClickableElement(lnkAudit);
 		return new AdminAuditPage();
 	}

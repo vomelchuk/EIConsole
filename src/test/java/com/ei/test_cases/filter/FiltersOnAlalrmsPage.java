@@ -71,5 +71,15 @@ public class FiltersOnAlalrmsPage extends BaseTestLogged {
 		TestUtils.getFilterResult(Alarms.COMMAND_LINE, value, sa);
 		sa.assertAll();
 	}
+	
+	@Test(dataProvider = "fileValues", dataProviderClass = EIDataProvider.class)
+	@Description("Verifying text filters based on specific characters")
+	@Story("Each text filter on Alarm view is verifying based on specific values")
+	@Severity(SeverityLevel.MINOR)
+	public void textAlarmFiltersWithDataFromFile(String columnName, String value) {
+		NavigateToViewBO.getAlarmsPage();
+		TestUtils.getFilterResult(Alarms.valueOf(columnName.toUpperCase()), value, sa);
+		sa.assertAll();
+	}
 
 }

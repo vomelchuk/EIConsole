@@ -13,11 +13,11 @@ public class LocalFilterNumeric extends BaseLocalFilter  {
 
 
 	public void setValue(int value) {
-		writeTextAndEnter(txtNumber, String.valueOf(value));
+		writeTextAndHitEnter(txtNumber, String.valueOf(value));
 	}
 
 	public void clearValue() {
-		writeTextAndEnter(txtNumber, "");
+		writeTextAndHitEnter(txtNumber, "");
 
 	}
 }

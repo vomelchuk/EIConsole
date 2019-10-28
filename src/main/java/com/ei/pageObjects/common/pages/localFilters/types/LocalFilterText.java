@@ -11,11 +11,11 @@ public class LocalFilterText extends BaseLocalFilter {
 	WebElement txtText;
 
 	public void setValue(String value) {
-		writeTextAndEnter(txtText, value);
+		writeTextAndHitEnter(txtText, value);
 	}
 
 	public void clearValue() {
-		writeTextAndEnter(txtText, "");
+		writeTextAndHitEnter(txtText, "");
 
 	}
 

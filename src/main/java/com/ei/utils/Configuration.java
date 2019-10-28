@@ -40,4 +40,9 @@ public class Configuration {
 	public static String getNativePassword() {
 		return get("password");
 	}
+	
+	public static String getUserDataFile() {
+		String f = System.getProperty("user.dir") + Configuration.get("data_path");
+		return f;
+	}
 }

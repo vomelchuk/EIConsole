@@ -51,5 +51,6 @@ public class FiltersOnAlarmRulesPage extends BaseTestLogged {
 			TestUtils.getFilterResult(filter, sa);
 		}
 		sa.assertAll();
+		Assert.assertEquals(1, 1);
 	}
 }

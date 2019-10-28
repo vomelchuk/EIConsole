@@ -6,6 +6,7 @@ import com.ei.pageObjects.MainPage;
 public class LoginToConsoleBO {
 
 	private static LoginPage login = new LoginPage();
+	private static MainPage main = new MainPage();
 
 	public static void loginAsNativeUserWithValidCredentials(String user, String passw) {
 		login.setUsername(user).setPassword(passw).clickLoginButton();
@@ -16,11 +17,11 @@ public class LoginToConsoleBO {
 	}
 
 	public static String getLoggedUser() {
-		return new MainPage().getLoggedUsername();
+		return main.getLoggedUsername();
 	}
 
 	public static void logout() {
-		new MainPage().clickLogoutButton();
+		main.clickLogoutButton();
 	}
 
 	public static String loginAsNativeUserWithInvalidCredentials(String user, String passw) {

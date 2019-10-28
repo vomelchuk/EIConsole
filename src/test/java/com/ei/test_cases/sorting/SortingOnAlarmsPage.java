@@ -1,6 +1,8 @@
 package com.ei.test_cases.sorting;
 
 import org.testng.annotations.Test;
+
+import com.ei.businessObjects.FilterAndColumnVisibilityBO;
 import com.ei.businessObjects.NavigateToViewBO;
 import com.ei.pageObjects.common.enumeration.FilterType;
 import com.ei.pageObjects.common.enumeration.Sortable;
@@ -21,6 +23,7 @@ public class SortingOnAlarmsPage extends BaseTestLogged {
 	@Severity(SeverityLevel.MINOR)
 	public void sortingTextColumnsTest() {
 		NavigateToViewBO.getAlarmsPage();
+		FilterAndColumnVisibilityBO.resetFiltersAndColumns();
 		for (Alarms column : Alarms.values()) {
 			if (column.getFilterType() != FilterType.TEXT || column.sorted() == Sortable.NO)
 				continue;

@@ -21,7 +21,7 @@ public class AddFilterOrColumnPage extends AddFilterOrColumnComponent {
 	}
 
 	@Step
-	public void enterSearchFilter(String text) {
+	public void typeSearchFilter(String text) {
 		writeText(txtQuickSearch, text);
 	}
 

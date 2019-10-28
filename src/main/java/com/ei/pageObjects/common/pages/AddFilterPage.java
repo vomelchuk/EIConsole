@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 
 public class AddFilterPage extends AddFilterOrColumnPage {
 
-	public AddFilterOrColumnPage checkItem(AbstractEnum myEnum) {
+	public AddFilterPage checkItem(AbstractEnum myEnum) {
 
 		if (!isItemChecked(myEnum, MyEnumType.FILTER)) {
 			clickItem(myEnum);
@@ -16,7 +16,7 @@ public class AddFilterPage extends AddFilterOrColumnPage {
 
 	}
 
-	public AddFilterOrColumnPage checkItems(AbstractEnum[] myEnum) {
+	public AddFilterPage checkItems(AbstractEnum[] myEnum) {
 		for (AbstractEnum item : myEnum) {
 			checkItem(item);
 		}
@@ -24,7 +24,7 @@ public class AddFilterPage extends AddFilterOrColumnPage {
 	}
 
 	@Step
-	public AddFilterOrColumnPage unCheckItem(AbstractEnum myEnum) {
+	public AddFilterPage unCheckItem(AbstractEnum myEnum) {
 		if (isItemChecked(myEnum, MyEnumType.FILTER)) {
 			clickItem(myEnum);
 		}
@@ -33,7 +33,7 @@ public class AddFilterPage extends AddFilterOrColumnPage {
 	}
 
 	@Step
-	public AddFilterOrColumnPage unCheckItems(AbstractEnum[] myEnum) {
+	public AddFilterPage unCheckItems(AbstractEnum[] myEnum) {
 		for (AbstractEnum item : myEnum) {
 			System.out.println(item + " - will being unchecked");
 			unCheckItem(item);

@@ -19,8 +19,9 @@ import com.ei.pageObjects.common.enumeration.ElementFindBy;
 import com.google.common.base.Function;
 
 public class BasePage {
-	@FindBy(xpath = "//div[contains(@class,'ei-progress')]")
-	WebElement progress;
+	/*
+	 * @FindBy(xpath = "//div[contains(@class,'ei-progress')]") WebElement progress;
+	 */
 
 	@FindBy(xpath = "//div[contains(@class,'Table__dataLoadingBackground')]")
 	WebElement loadingBackground;
@@ -126,7 +127,7 @@ public class BasePage {
 		elem.sendKeys(value);
 	}
 
-	public void writeTextAndEnter(WebElement elem, String value) {
+	public void writeTextAndHitEnter(WebElement elem, String value) {
 		waitForWebElementDisplayed(elem);
 		elem.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 		elem.sendKeys(value);

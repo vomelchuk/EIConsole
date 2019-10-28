@@ -17,6 +17,7 @@
 			<package name="com.ei.test_cases.sorting" />
 		</packages>
 	</test>
+	
 	<test name="Filters">
 		<packages>
 			<package name="com.ei.test_cases.filter" />

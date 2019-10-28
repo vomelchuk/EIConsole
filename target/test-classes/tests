@@ -1,0 +1,16 @@
+1. Login:
+   login with valid credentials
+   login with invalid credentials
+   
+2. Sorting:
+   login to console
+   navigate to e.g. Alarms page
+   click on any column
+   verify if values are sorted according chosen sort mode
+
+3. Filtering:
+   login to console
+   navigate to e.g. Alarms page
+   add any filter
+   verify if values match the filer
+   

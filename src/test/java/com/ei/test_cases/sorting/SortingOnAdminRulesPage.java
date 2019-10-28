@@ -18,13 +18,16 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
 public class SortingOnAdminRulesPage extends BaseTestLogged {
-	Logger log = Logger.getLogger(FiltersOnAlarmRulesPage.class.getName());
+	
+	Logger log = Logger.getLogger(FiltersOnAlarmRulesPage.class);
+	
 	@Test
 	@Description("Navigate to Alarm Rules page")
 	@Story("After login has done user is navigating to Alarm Rules view")
 	@Severity(SeverityLevel.CRITICAL)
 	public void navigationToAdminRulesPageTest() {
 		NavigateToViewBO.getAdminRulesPage();
+		
 		String pageName = SortingBO.getViewName();
 		sa.assertEquals(pageName, "Admin");
 		FilterAndColumnVisibilityBO.resetFiltersAndColumns();
@@ -37,6 +40,7 @@ public class SortingOnAdminRulesPage extends BaseTestLogged {
 	@Severity(SeverityLevel.MINOR)
 	public void sortingTextColumnsTest() {
 		NavigateToViewBO.getAdminRulesPage();
+		FilterAndColumnVisibilityBO.resetFiltersAndColumns();
 		for (AlarmRules column : AlarmRules.values()) {
 			if (column.getFilterType() != FilterType.TEXT || column.sorted() == Sortable.NO)
 				continue;

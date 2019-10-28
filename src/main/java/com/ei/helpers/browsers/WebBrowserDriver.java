@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.ei.helpers.browsers.implementations.Browser;
 import com.ei.helpers.browsers.implementations.ChromeBrowser;
-import com.ei.helpers.browsers.implementations.FirefoxWebBrowser;
+import com.ei.helpers.browsers.implementations.FirefoxBrowser;
 import com.ei.utils.Configuration;
 
 public class WebBrowserDriver {
@@ -20,7 +20,7 @@ public class WebBrowserDriver {
 			this.browser = new ChromeBrowser();
 			break;
 		case FIREFOX:
-			this.browser = new FirefoxWebBrowser();
+			this.browser = new FirefoxBrowser();
 			break;
 		}
 

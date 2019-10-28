@@ -9,8 +9,9 @@ public class BaseTestLogged extends BaseTest {
 
 	@BeforeMethod
 	public void loginToEIConsole() {
-		LoginToConsoleBO.loginAsNativeUserWithValidCredentials(Configuration.getNativeUsername(),
-				Configuration.getNativePassword());
+		String user = Configuration.getNativeUsername();
+		String passw = Configuration.getNativePassword();
+		LoginToConsoleBO.loginAsNativeUserWithValidCredentials(user, passw);
 	}
 
 	@AfterMethod
